@@ -5,11 +5,12 @@
 // 5. Вкупен просек на студенти чие име завршува на а наспроти сите останати.
 
 function endsWithA(students) {
-    return students.filter(stud => stud.grad === "Skopje").filter(stud => stud.ime.endsWith("a")).filter(stud1 => stud1.prosek > 7).sort((a,b) => a.ime < b.ime ? -1 : a.ime > b.ime ? 1 : 0)
+    return students.filter(stud => stud.grad === "Skopje" && stud.ime.endsWith("a") && stud.prosek >7)
+    .sort((a,b) => a.ime < b.ime ? -1 : a.ime > b.ime ? 1 : 0)
 }
 
 function nineSkopje(students){
-    return students.filter(el => el.prosek > 9).filter((el) => el.grad !== "Skopje").sort((a,b) => b.prosek-a.prosek)
+    return students.filter(el => el.prosek > 9 && el.grad !== "Skopje").sort((a,b) => b.prosek-a.prosek)
 }
 function fiveChar(students) {
     return students.filter(stud => (stud.ime.length === 5)).slice(0,3).sort((a,b) => b.prosek - a.prosek)
@@ -40,7 +41,8 @@ cities.forEach(element => {
     averageCities.push({average:calculateAverageByCity(element, students),grad :element})
 })
 // Sotring and printing the cities by average grade
-    averageCities = averageCities.sort((a,b) => b.average - a.average).forEach(el => console.log(el.grad," ",el.average))
+    averageCities = averageCities.sort((a,b) => b.average - a.average)
+    .forEach(el => console.log(el.grad," ",el.average))
    
 }
 
@@ -64,4 +66,3 @@ module.exports = {
     averageGrade,
     averageCompare
 }
-
