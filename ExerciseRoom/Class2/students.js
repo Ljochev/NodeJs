@@ -13,9 +13,9 @@ function nineSkopje(students){
     return students.filter(el => el.prosek > 9 && el.grad !== "Skopje").sort((a,b) => b.prosek-a.prosek)
 }
 function fiveChar(students) {
-    return students.filter(stud => (stud.ime.length === 5)).slice(0,3).sort((a,b) => b.prosek - a.prosek)
+    // return students.filter(stud => (stud.ime.length === 5)).slice(0,3).sort((a,b) => b.prosek - a.prosek)
     // The top 3 students with five letters 
-    // return students.filter(stud => (stud.ime.length === 5)).sort((a,b) => b.prosek - a.prosek).slice(0,3)
+    return students.filter(stud => (stud.ime.length === 5)).sort((a,b) => b.prosek - a.prosek).slice(0,3)
 }
 
 
@@ -36,6 +36,7 @@ function averageGrade(students){
             cities.push(element.grad)
         }
     })
+    console.log(cities)
 // Making array of objects who includes the city and the average grade of the students from that city
 cities.forEach(element => {
     averageCities.push({average:calculateAverageByCity(element, students),grad :element})
