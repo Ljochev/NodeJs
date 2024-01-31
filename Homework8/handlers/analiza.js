@@ -12,7 +12,7 @@ const getText = async (req, res) => {
 
 const postText = async (req, res) => {
     const {text_to_check} = req.body
-    if (text_to_check.length <10 || text_to_check.length > 5000)
+    if (text_to_check.length < 20 || text_to_check.length > 5000)
     return res.status(400).send("Bad request")
 
 
@@ -94,7 +94,7 @@ const parseTemplate = async (template, data = null) => {
             if(err) {return reject(err) }
             if(data) {
                 for(d in data) {
-                    content = content.replace(`{{${d}}`, data[d])
+                    content = content.replace(`{{${d}}}`, data[d])
                 }
             }
             return resolve(content)
