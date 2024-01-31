@@ -12,9 +12,9 @@ const getText = async (req, res) => {
 
 const postText = async (req, res) => {
     const {text_to_check} = req.body
-    // if (text_to_check.length <10 || text_to_check.length > 5000)
-    // return res.status(400).send("Bad request")
-// console.log(text_to_check)
+    if (text_to_check.length <10 || text_to_check.length > 5000)
+    return res.status(400).send("Bad request")
+
 
 
 
@@ -72,6 +72,7 @@ wordsDownFiveNum = (wordsDownFiveNum - sentencesNum) + 1
 
 try {
     let output = await parseTemplate("gramar_check", {
+        text_to_check: text_to_check,
         caracterNumbers: textLength,
         wordsDownFive: wordsDownFiveNum,
         wordsUpFive: wordsUpFiveNum,
