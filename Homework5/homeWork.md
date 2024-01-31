@@ -8,3 +8,5 @@
 ^[^A-Z]+$                                                                           => Anything but capital letters
 ^[^\d]+$                                                                            => Anything but numbers
 ^\d{1,3}\-\d{1,3}$                                                                  => Basketball score
+
+https://regexr.com/7qqce
