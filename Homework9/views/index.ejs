@@ -15,10 +15,10 @@
     </tr>
     <% fileData.forEach((student, i) => { %>
         <tr>
-            <th><%=student.name%></th>
-            <th><%=student.lastName%></th>
-            <th><%=student.averageGrade%></th>
-            <th><a href="/brishi?i=<%=`${i}`%>">Brisi</a></th>
+            <td><%=student.name%></td>
+            <td><%=student.lastName%></td>
+            <td><%=student.averageGrade%></td>
+            <td><a href="/brishi?i=<%=i%>">Brisi</a></td>
         </tr>
     <%}); %>
     </table>

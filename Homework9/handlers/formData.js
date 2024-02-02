@@ -24,21 +24,22 @@ const redirectStudents = async (req, res) => {
     if(!regexAZ.test(name) || !regexAZ.test(lastName) || !regex09.test(averageGrade)){
         return res.status(400).send("Bad request")
     }
-
+try{ 
 let fileData = await read(`${__dirname}/../studenti.json`)
+
 fileData.push(req.body)
 await write(`${__dirname}/../studenti.json`, JSON.stringify(fileData))
 // fileData = await read(`${__dirname}/../studenti.json`)
-    try{
     res.redirect("/studenti")
-} catch (err) {
-    res.status(500).send("Invalid server error!")
+}
+catch(err) {
+    res.status(500).send("Invalid server error")
 }
 }
 
 const getStudentsData = async (req, res) => {
+    try{
     const fileData = await read(`${__dirname}/../studenti.json`)
-try{
     res.render("index", { fileData })
 } catch(err) {
     res.status(500).send("Invalid server error")
@@ -47,11 +48,14 @@ try{
 
 const delateStudent = async (req, res) => {
     const j = req.query.i
+    console.log(j, "Dali raboti")
+    try{
     let fileData = await read(`${__dirname}/../studenti.json`)
     fileData.splice(j, 1)
+    console.log(typeof j)
     console.log(fileData, j)
     await write(`${__dirname}/../studenti.json`, JSON.stringify(fileData))
-    try{
+    
         res.redirect("/studenti")
     } catch (err) {
         res.status(500).send("Invalid server error!")
@@ -63,14 +67,13 @@ const delateStudent = async (req, res) => {
 
 
 const parseTemplate = async (template, data = null) => {
-    if(data) {
-    }
+  
     return new Promise((resolve, reject) => {
         fs.readFile(`${__dirname}/../views/${template}.html`, "utf-8", (err, content) => {
             if(err) {
                 return reject(err)
             } 
-            if (data === null) return resolve(content)
+            return resolve(content)
             
         })
     })
