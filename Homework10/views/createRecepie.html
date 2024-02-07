@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="global.css">
+  </head>
+  <body>
+    <header>
+        <h1>Dobredojdovte na stranata za recepti</h1>
+    </header>
+    <form action="/form" method="post">
+      <p>Ime na recept: <input type="text" name="ime" required></p>
+      <p>Sostojki:</p>
+      <div id="ingrediants">
+      </div>
+      <button id="myBytton" type="button">Nova sostojka</button><br/>
+    <p>Vreme za podgotovka: <input type="text" name="time" required></p>
+    <p>Nacin na podgotovka: </p>
+    <div id="stepByStep">
+    </div>
+    <button id="myStepButton" type="button">Sleden cekor</button><br/>
+    
+      <button id="showData" type="submit">Kreiraj recept</button>
+  </form>
+  <button><a href="/recepti">Prikazi gi receptite</a></button>
+    <script src="createForm.js"></script>
+  </body>
+</html>

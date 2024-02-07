@@ -51,7 +51,7 @@ const delateStudent = async (req, res) => {
     console.log(j, "Dali raboti")
     try{
     let fileData = await read(`${__dirname}/../studenti.json`)
-    fileData.splice(j, 1)
+    fileData.splice(Number(j), 1)
     console.log(typeof j)
     console.log(fileData, j)
     await write(`${__dirname}/../studenti.json`, JSON.stringify(fileData))

@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Recepie</title>
+</head>
+<body>
+    <%-  include("partials/header") %>
+   <table border="1" width="100%">
+    <tr>
+        <th>Ime na recept</th>
+        <th>Sostojki</th>
+        <th>Vreme na podgotovka</th>
+        <th>Cekori na prodgotovka</th>
+        <th>Promeni</th>
+        <th>Brisenje</th>
+    </tr>
+    <% data.forEach((recept,i) => { %>
+        <tr>
+            <td><%= recept.ime %></td>
+            <td>
+                <ul>
+                <% recept.sostojki.forEach(sostojka => { %>
+                <li><%= sostojka %></li>
+            <% }) %>
+        </ul>
+        </td>
+            <td><%= recept.time %></td>
+            <td>
+                <ol>
+                <% recept.making.forEach(step => { %>
+                <li><%= step %></li>
+            <% }) %>
+        </ol>
+        </td>
+            <td><a href="/edit?index=<%=i %>">Promeni</a></td>
+            <td>
+               <a href="/brishi?index=<%=i %>">Brishi</a>
+            </td>
+        </tr>
+
+<% }); %>
+   </table>
+   <button><a href="/form">Nov recept</a></button>
+   
+</body>
+</html>

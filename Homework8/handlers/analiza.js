@@ -30,6 +30,8 @@ let letterCount = 0
 
 const getWord = (index, wordLength) => {
     switch(text_to_check[index - wordLength]) {
+
+        // ABCD 
         case "a":
         case "A":
         case "e":
@@ -60,7 +62,7 @@ for(i = 0; i < textLength; i++) {
         wordsNum++ 
         letterCount = 0
     }
-    if(text_to_check[i] === ".") {
+    if(text_to_check[i] === "." || text_to_check[i] === "!" || text_to_check[i] === "?") {
         getWord(i, letterCount - 1)
         sentencesNum++ 
         letterCount = 0
